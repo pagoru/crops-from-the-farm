@@ -1,0 +1,29 @@
+name: Publish
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install deps
+        run: yarn install --immutable
+
+      - name: Run Prettier check
+        run: yarn run prettier:check
+
+      - name: Build
+        run: yarn build

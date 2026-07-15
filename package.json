@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "yarn@4.6.0",
+  "scripts": {
+    "start": "vite --host",
+    "build": "vite build",
+    "prettier:check": "prettier -c ./",
+    "prettier:write": "prettier --write ."
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "5.1.0",
+    "@types/js-cookie": "3.0.6",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.3",
+    "prettier": "3.9.5",
+    "vite": "8.1.3",
+    "zustand": "5.0.14"
+  },
+  "dependencies": {
+    "@oh/queue": "npm:@jsr/oh__queue@1.1.1",
+    "@openhotel/pixi-components": "0.1.9",
+    "@thumbmarkjs/thumbmarkjs": "1.10.0",
+    "dayjs": "1.11.21",
+    "js-cookie": "3.0.8",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "ulidx": "2.4.1"
+  }
+}

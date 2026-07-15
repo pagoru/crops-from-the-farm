@@ -1,0 +1,53 @@
+import React, {
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { LoaderItem } from "shared/types";
+
+type Props = {
+  loaderItems: LoaderItem[];
+  onDone?: () => void;
+} & PropsWithChildren;
+
+export const LoaderAssetsComponent: React.FC<Props> = ({
+  loaderItems,
+  onDone,
+  children,
+}) => {
+  const currentPercentageRef = useRef<number>(0);
+
+  const [currentText, setCurrentText] = useState<string>(`system.loading...	`);
+  useEffect(() => {
+    if (loaderItems.length === 0) {
+      setCurrentText(null);
+      return;
+    }
+    (async () => {
+      const totalItems = loaderItems.reduce(
+        (total, { items }) => total + items.length,
+        0,
+      );
+      let currentItem = 0;
+      for (const { items, func, label } of loaderItems) {
+        setCurrentText(`system.loading ${label}`);
+        for (const item of items) {
+          setCurrentText(`system.loading ${item.split(".")[0]}`);
+          await func(item);
+          currentItem++;
+          currentPercentageRef.current = currentItem / totalItems;
+        }
+        setCurrentText(`system.loading ${label}`);
+      }
+      setCurrentText(null);
+      onDone?.();
+    })();
+  }, [loaderItems, setCurrentText, onDone]);
+
+  return useMemo(
+    () => (currentText ? null : children),
+    [currentText, children],
+  );
+};

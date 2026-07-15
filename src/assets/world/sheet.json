@@ -1,0 +1,24 @@
+{
+  "frames": {
+    "grass_0": {
+      "frame": { "x": 0, "y": 16, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "grass_1": {
+      "frame": { "x": 16, "y": 16, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    }
+  },
+  "animations": {},
+  "meta": {
+    "format": "RGBA8888",
+    "image": "sprite.png",
+    "size": {
+      "w": 384,
+      "h": 384
+    },
+    "scale": 1
+  }
+}
