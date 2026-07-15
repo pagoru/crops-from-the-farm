@@ -5,11 +5,13 @@ on:
       - "*"
 
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   itchio_project: pagoru/crops-from-the-farm
   itchio_channel: html
 
 jobs:
   publish:
+    permissions: write-all
     name: "Publish"
     runs-on: ubuntu-latest
 
