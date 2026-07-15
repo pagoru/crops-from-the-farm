@@ -8,10 +8,10 @@ export default defineConfig({
   },
   plugins: [react()],
   root: "./src",
-  base: "/",
+  base: "./",
   publicDir: "assets",
   build: {
-    outDir: "./build",
+    outDir: "../build",
     emptyOutDir: true, // also necessary
   },
   resolve: {

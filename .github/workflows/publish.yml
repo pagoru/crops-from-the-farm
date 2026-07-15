@@ -1,0 +1,73 @@
+name: Publish
+on:
+  push:
+    tags:
+      - "*"
+
+env:
+  itchio_project: pagoru/crops-from-the-farm
+  itchio_channel: html
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Set Versions
+        uses: actions/github-script@v4
+        id: set_version
+        with:
+          script: |
+            const tag = context.ref.substring(10).replace('v', '')
+            core.setOutput('tag', tag)
+            core.setOutput('version', tag.split("-")[0])
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install deps
+        run: yarn install --immutable
+
+      - name: Run Prettier check
+        run: yarn run prettier:check
+
+      - name: Add version to package.json
+        uses: jaywcjlove/github-action-package@main
+        with:
+          path: "./package.json"
+          data: |
+            {
+              "version": "${{ steps.set_version.outputs.tag }}"
+            }
+
+      - name: Build
+        run: yarn build
+
+      - name: Zip Build Folder Contents
+        run: |
+          mkdir -p ./build/zips
+          cd ./build
+          zip -r ./zips/build-${{ steps.set_version.outputs.tag }}.zip . -x "zips/*"
+
+      - name: "Upload to release"
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./build/zips/build-${{ steps.set_version.outputs.tag }}.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
+
+      - name: Upload ${{ matrix.preset }} to itch.io project
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: ./build/zips/build-${{ steps.set_version.outputs.tag }}.zip
+          project: ${{ env.itchio_project }}
+          channel: ${{ env.itchio_channel }}
+          version: ${{ steps.set_version.outputs.tag }}
+          api-key: ${{ secrets.ITCHIO_API_KEY }}
