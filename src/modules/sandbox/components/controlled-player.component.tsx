@@ -29,11 +29,12 @@ const ControlledPlayerComponent: React.FC = () => {
       }
     });
 
+    const consumedDelta = 80;
     let accDelta = 0;
     const onRemoveCustomTicker = add({
       type: TickerQueue.CUSTOM,
       onFunc: (delta: number) => {
-        if (accDelta > 100) {
+        if (accDelta > consumedDelta) {
           switch (currentKeyCode.current[currentKeyCode.current.length - 1]) {
             case "KeyD":
               setPosition((position) => ({ ...position, x: position.x + 1 }));
@@ -52,7 +53,7 @@ const ControlledPlayerComponent: React.FC = () => {
               setDirection("left");
               break;
           }
-          accDelta -= 100;
+          accDelta -= consumedDelta;
         }
         accDelta += delta;
       },
