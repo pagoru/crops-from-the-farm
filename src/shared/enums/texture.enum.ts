@@ -1,2 +1,1 @@
-export enum TextureEnum {
-}
+export enum TextureEnum {}

@@ -1,2 +1,1 @@
-
-export * from './loader.types'
+export * from "./loader.types";
