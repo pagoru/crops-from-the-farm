@@ -3,7 +3,7 @@ import { NesterComponent } from "shared/components";
 import { AppComponent } from "./app.component.tsx";
 import { InitialLoaderComponent } from "./initial-loader.component.tsx";
 import { CoreLoaderComponent } from "./core-loader.component.tsx";
-import { RouterProvider, TickerProvider } from "shared/hooks";
+import { CameraProvider, RouterProvider, TickerProvider } from "shared/hooks";
 
 export const ApplicationComponent = () => {
   const providers = useMemo(
@@ -13,6 +13,8 @@ export const ApplicationComponent = () => {
       TickerProvider,
       InitialLoaderComponent,
       CoreLoaderComponent,
+      CameraProvider,
+      //
       RouterProvider,
     ],
     [],

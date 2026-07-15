@@ -4,7 +4,7 @@ import { Event, Point, useEvents } from "@openhotel/pixi-components";
 import { useTicker } from "shared/hooks";
 import { TickerQueue } from "@oh/queue";
 
-const ControlledPlayerComponent: React.FC = () => {
+export const ControlledPlayerComponent: React.FC = () => {
   const { on } = useEvents();
   const { add } = useTicker();
 
@@ -74,4 +74,3 @@ const ControlledPlayerComponent: React.FC = () => {
     />
   );
 };
-export default ControlledPlayerComponent;
