@@ -1,11 +1,16 @@
 import React from "react";
-import { SpriteTextComponent } from "@openhotel/pixi-components";
-import { SpriteSheetEnum } from "shared/enums";
+import { TextComponent } from "shared/components";
 
 export const GuiComponent: React.FC = () => {
   return (
     <>
-      <SpriteTextComponent text={"A A A"} spriteSheet={SpriteSheetEnum.FONT} />
+      <TextComponent text="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890" />
+      <TextComponent
+        text="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+        position={{
+          y: 7,
+        }}
+      />
     </>
   );
 };
