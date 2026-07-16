@@ -6,8 +6,6 @@ import {
   SpriteTextComponent,
 } from "@openhotel/pixi-components";
 import { SpriteSheetEnum } from "shared/enums";
-import { ControlledPlayerComponent } from "./controlled-player.component.tsx";
-import { CameraComponent } from "shared/components";
 import { getNoise } from "shared/utils";
 
 export const SandboxComponent: React.FC = () => {
@@ -39,10 +37,7 @@ export const SandboxComponent: React.FC = () => {
   return (
     <ContainerComponent>
       <SpriteTextComponent text={"A A A"} spriteSheet={SpriteSheetEnum.FONT} />
-      <CameraComponent>
-        <ContainerComponent ref={mapRef}>{renderMap}</ContainerComponent>
-        <ControlledPlayerComponent />
-      </CameraComponent>
+      <ContainerComponent ref={mapRef}>{renderMap}</ContainerComponent>
     </ContainerComponent>
   );
 };
