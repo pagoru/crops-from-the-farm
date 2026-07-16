@@ -1,10 +1,4 @@
-import React, {
-  ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-} from "react";
+import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { queue, QueueItemProps, ticker } from "@oh/queue";
 import { QueueMutable } from "@oh/queue";
 
@@ -14,9 +8,7 @@ type State = {
 
 const TickerContext = React.createContext<State>(undefined);
 
-type ProviderProps = {
-  children: ReactNode;
-};
+type ProviderProps = {} & React.PropsWithChildren;
 
 export const TickerProvider: React.FunctionComponent<ProviderProps> = ({
   children,

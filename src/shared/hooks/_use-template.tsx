@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import React, { useContext } from "react";
 import { create } from "zustand";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -12,9 +12,7 @@ type State = {};
 
 const _TemplateContext = React.createContext<State>(undefined);
 
-type _TemplateProps = {
-  children: ReactNode;
-};
+type _TemplateProps = {} & React.PropsWithChildren;
 
 export const _TemplateProvider: React.FunctionComponent<_TemplateProps> = ({
   children,

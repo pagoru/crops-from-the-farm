@@ -1,2 +1,3 @@
 export * from "./route.consts";
-export * from "./player.consts";
+export * from "./character.consts";
+export * from "./gamepad.consts";

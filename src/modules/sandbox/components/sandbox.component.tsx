@@ -6,20 +6,22 @@ import {
   SpriteTextComponent,
 } from "@openhotel/pixi-components";
 import { SpriteSheetEnum } from "shared/enums";
-import { ControlledPlayerComponent } from "./controlled-player.component.tsx";
-import { CameraComponent } from "shared/components";
+import { getNoise } from "shared/utils";
 
 export const SandboxComponent: React.FC = () => {
   const mapRef = useRef<ContainerRef>(null);
 
   const renderMap = useMemo(() => {
+    const noise = getNoise();
     const list = [];
-    for (let y = 0; y < 100; y++) {
-      for (let x = 0; x < 100; x++) {
+    const size = 20;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const currentNoise = noise(x, y);
         list.push(
           <SpriteComponent
             key={x + "_" + y}
-            texture={"grass_0"}
+            texture={currentNoise > 0 ? "grass_1" : "grass_0"}
             spriteSheet={SpriteSheetEnum.WORLD}
             position={{
               x: x * 8 - y * 8,
@@ -33,10 +35,9 @@ export const SandboxComponent: React.FC = () => {
   }, []);
 
   return (
-    <CameraComponent>
-      <ContainerComponent ref={mapRef}>{renderMap}</ContainerComponent>
+    <ContainerComponent>
       <SpriteTextComponent text={"A A A"} spriteSheet={SpriteSheetEnum.FONT} />
-      <ControlledPlayerComponent />
-    </CameraComponent>
+      <ContainerComponent ref={mapRef}>{renderMap}</ContainerComponent>
+    </ContainerComponent>
   );
 };

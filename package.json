@@ -22,10 +22,12 @@
     "@oh/queue": "npm:@jsr/oh__queue@1.1.1",
     "@openhotel/pixi-components": "0.1.9",
     "@thumbmarkjs/thumbmarkjs": "1.10.0",
+    "alea": "^1.0.1",
     "dayjs": "1.11.21",
     "js-cookie": "3.0.8",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "simplex-noise": "^4.0.3",
     "ulidx": "2.4.1"
   }
 }
