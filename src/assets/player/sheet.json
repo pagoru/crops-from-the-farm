@@ -54,11 +54,95 @@
       "frame": { "x": 80, "y": 16, "w": 16, "h": 16 },
       "sourceSize": { "w": 16, "h": 16 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "pick_0": {
+      "frame": { "x": 0, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "pick_1": {
+      "frame": { "x": 16, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "pick_2": {
+      "frame": { "x": 32, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "pick_3": {
+      "frame": { "x": 48, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "mine_0": {
+      "frame": { "x": 0, "y": 48, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "mine_1": {
+      "frame": { "x": 16, "y": 48, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "mine_2": {
+      "frame": { "x": 32, "y": 48, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "mine_3": {
+      "frame": { "x": 48, "y": 48, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "chop_0": {
+      "frame": { "x": 0, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "chop_1": {
+      "frame": { "x": 16, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "chop_2": {
+      "frame": { "x": 32, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "chop_3": {
+      "frame": { "x": 48, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "plow_0": {
+      "frame": { "x": 0, "y": 80, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "plow_1": {
+      "frame": { "x": 16, "y": 80, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "plow_2": {
+      "frame": { "x": 32, "y": 80, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "plow_3": {
+      "frame": { "x": 48, "y": 80, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {
     "idle": ["idle_0", "idle_1", "idle_2", "idle_3", "idle_4"],
-    "walk": ["walk_0", "walk_1", "walk_2", "walk_3", "walk_4", "walk_5"]
+    "walk": ["walk_0", "walk_1", "walk_2", "walk_3", "walk_4", "walk_5"],
+    "pick": ["pick_0", "pick_1", "pick_2", "pick_3"],
+    "mine": ["mine_0", "mine_1", "mine_2", "mine_3"],
+    "chop": ["chop_0", "chop_1", "chop_2", "chop_3"],
+    "plow": ["plow_0", "plow_1", "plow_2", "plow_3"]
   },
   "meta": {
     "format": "RGBA8888",
