@@ -4,19 +4,19 @@ import {
   PlayStatus,
   Point,
 } from "@openhotel/pixi-components";
-import { SpriteSheetEnum } from "shared/enums";
+import { CharacterAnimation, SpriteSheetEnum } from "shared/enums";
 import { CHARACTER_ANIMATIONS_SPEED } from "shared/consts";
 import { getRealPositionFromIsometricPosition } from "shared/utils";
 
 type Props = {
-  animation?: string;
+  animation?: CharacterAnimation;
   direction?: "right" | "left";
   position?: Point;
 };
 
 export const CharacterComponent: React.FC<Props> = ({
   direction = "right",
-  animation = "idle",
+  animation = CharacterAnimation.IDLE,
   position = { x: 0, y: 0 },
 }) => {
   const $position = getRealPositionFromIsometricPosition(position);
