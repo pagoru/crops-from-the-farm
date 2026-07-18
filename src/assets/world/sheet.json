@@ -9,6 +9,31 @@
       "frame": { "x": 16, "y": 16, "w": 16, "h": 16 },
       "sourceSize": { "w": 16, "h": 16 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "grass_block": {
+      "frame": { "x": 16, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_0": {
+      "frame": { "x": 0, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_left": {
+      "frame": { "x": 32, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_right": {
+      "frame": { "x": 48, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_both": {
+      "frame": { "x": 64, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {},
