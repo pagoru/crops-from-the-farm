@@ -75,7 +75,6 @@ export const CatenaryCable: React.FC<Props> = ({
     (graphics: Graphics) => {
       graphics.clear();
 
-      // Calculate the control point for the quadratic curve
       const cx = ($firstPoint.x + $secondPoint.x) / 2;
       const cy = ($firstPoint.y + $secondPoint.y) / 2 + (sag + $sag) * 2;
 
