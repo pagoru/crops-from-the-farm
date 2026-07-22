@@ -59,7 +59,7 @@ export const MapComponent: React.FC = () => {
 
         elements.push(
           <BlockComponent
-            key={`${j}_${k}`}
+            key={`block_${j}_${k}`}
             position={{ x: k, y: j }}
             type={blockType}
           />,
@@ -78,12 +78,12 @@ export const MapComponent: React.FC = () => {
     for (let j = 0; j < 6; j++) {
       for (let k = 0; k < 6; k++) {
         const type = treeTypes[
-          getRandomNumber(0, treeTypes.length)
+          getRandomNumber(0, treeTypes.length - 1)
         ] as TreeType;
         list.push(
           <TreeComponent
             type={type}
-            key={j + "_" + k + "tree"}
+            key={j + "_" + k + "tree" + type}
             position={{
               x: j * getRandomNumber(10, 16),
               y: k * getRandomNumber(10, 16),
