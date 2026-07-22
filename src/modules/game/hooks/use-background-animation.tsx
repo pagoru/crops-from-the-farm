@@ -1,24 +1,18 @@
-import React, { useCallback, useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useTicker } from "shared/hooks";
 import { TickerQueue } from "@oh/queue";
 import { useEvents } from "@openhotel/pixi-components";
 import { CustomEvent } from "shared/enums";
 
-type State = {
-  getSway: (time?: number, seed?: number) => number;
-};
+type State = {};
 
-const SwayAnimationContext = React.createContext<State>({
-  getSway: () => 0,
-});
+const BackgroundAnimationContext = React.createContext<State>({});
 
-type SwayAnimationProps = {
-  amplitude?: number;
-} & React.PropsWithChildren;
+type BackgroundAnimationProps = {} & React.PropsWithChildren;
 
-export const SwayAnimationProvider: React.FunctionComponent<
-  SwayAnimationProps
-> = ({ children, amplitude = 3 }) => {
+export const BackgroundAnimationProvider: React.FunctionComponent<
+  BackgroundAnimationProps
+> = ({ children }) => {
   const { emit } = useEvents();
   const { add } = useTicker();
 
@@ -48,20 +42,8 @@ export const SwayAnimationProvider: React.FunctionComponent<
     };
   }, [add, emit]);
 
-  const getSway = useCallback(
-    (time: number = timeRef.current, seed = 0) =>
-      Math.sin(time + seed) * amplitude,
-    [amplitude],
-  );
-
-  return (
-    <SwayAnimationContext.Provider
-      value={{
-        getSway,
-      }}
-      children={children}
-    />
-  );
+  return <BackgroundAnimationContext.Provider value={{}} children={children} />;
 };
 
-export const useSwayAnimation = (): State => useContext(SwayAnimationContext);
+export const useBackgroundAnimation = (): State =>
+  useContext(BackgroundAnimationContext);

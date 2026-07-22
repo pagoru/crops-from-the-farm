@@ -7,6 +7,12 @@ export const TREE_SPRITE_PIVOT_MAP: Record<TreeType, Point> = {
   [TreeType.SMALL_2]: { x: 7, y: 31 },
 };
 
+export const TREE_SPRITE_Z_INDEX_MAP: Record<TreeType, number> = {
+  [TreeType.BIG]: 0,
+  [TreeType.SMALL_1]: -2,
+  [TreeType.SMALL_2]: -2,
+};
+
 export const TREE_SPRITE_MAP: Record<TreeType, string> = {
   [TreeType.BIG]: "tree",
   [TreeType.SMALL_1]: "small_tree_0",

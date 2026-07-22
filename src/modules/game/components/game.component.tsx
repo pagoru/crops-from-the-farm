@@ -6,7 +6,7 @@ import {
   PlayerProvider,
   PlayerComponent,
   MapComponent,
-  SwayAnimationProvider,
+  BackgroundAnimationProvider,
 } from "modules/game";
 import { ContainerComponent } from "@openhotel/pixi-components";
 import { NesterComponent } from "shared/components";
@@ -19,7 +19,7 @@ export const GameComponent: React.FC = () => {
       ),
       GameProvider,
       PlayerProvider,
-      SwayAnimationProvider,
+      BackgroundAnimationProvider,
     ],
     [],
   );

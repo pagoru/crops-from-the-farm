@@ -134,6 +134,11 @@
       "frame": { "x": 48, "y": 80, "w": 16, "h": 16 },
       "sourceSize": { "w": 16, "h": 16 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "shadow": {
+      "frame": { "x": 80, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {

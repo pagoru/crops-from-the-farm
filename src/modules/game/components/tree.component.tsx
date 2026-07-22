@@ -10,12 +10,14 @@ import { CustomEvent, SpriteSheetEnum, TreeType } from "shared/enums";
 import {
   getPositionFromIsometricPosition,
   getRandomNumber,
+  getSwayAnimation,
+  getZIndexFromIsometricPosition,
 } from "shared/utils";
-import { useSwayAnimation } from "modules/game";
 import {
   TREE_MASK_MAP,
   TREE_SPRITE_MAP,
   TREE_SPRITE_PIVOT_MAP,
+  TREE_SPRITE_Z_INDEX_MAP,
 } from "shared/consts";
 
 type Props = {
@@ -28,7 +30,6 @@ export const TreeComponent: React.FC<Props> = ({
   type = TreeType.BIG,
 }) => {
   const { on } = useEvents();
-  const { getSway } = useSwayAnimation();
 
   const spritesRef = useRef<SpriteRef[]>([]);
   const seedRef = useRef<number>(getRandomNumber(0, 10_000_000));
@@ -42,7 +43,7 @@ export const TreeComponent: React.FC<Props> = ({
       CustomEvent.SWAY_ANIMATION,
       ({ time } = { time: 0 }) => {
         spritesRef.current.forEach((sprite, index) => {
-          const sway = getSway(time, seedRef.current);
+          const sway = getSwayAnimation(time, 3, seedRef.current);
           sprite.component.position.x = Math.round(sway * maskData.sway[index]);
         });
       },
@@ -51,7 +52,7 @@ export const TreeComponent: React.FC<Props> = ({
     return () => {
       onRemoveSwayAnimationEvent();
     };
-  }, [on, getSway, maskData]);
+  }, [on, maskData]);
 
   const $position = useMemo(
     () =>
@@ -107,6 +108,7 @@ export const TreeComponent: React.FC<Props> = ({
     if (lastHeight > 0)
       spriteList.push(
         <SpriteComponent
+          key={`sprite_${spriteList.length}`}
           texture={texture}
           spriteSheet={SpriteSheetEnum.WORLD}
           maskPosition={{
@@ -132,12 +134,14 @@ export const TreeComponent: React.FC<Props> = ({
     return spriteList;
   }, [maskData]);
 
+  const $zIndex = useMemo(
+    () =>
+      getZIndexFromIsometricPosition(position) + TREE_SPRITE_Z_INDEX_MAP[type],
+    [position, type],
+  );
+
   return (
-    <ContainerComponent
-      position={$position}
-      pivot={pivot}
-      zIndex={(position.x ?? 0) + (position.y ?? 0)}
-    >
+    <ContainerComponent position={$position} pivot={pivot} zIndex={$zIndex}>
       {renderSprites}
     </ContainerComponent>
   );

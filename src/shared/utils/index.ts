@@ -1,3 +1,4 @@
 export * from "./noise.utils";
-export * from "./character.utils";
+export * from "./position.utils";
 export * from "./random.utils";
+export * from "./animation.utils";

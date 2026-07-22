@@ -1,40 +1,32 @@
 import React, { useMemo } from "react";
-import { SpriteSheetEnum } from "shared/enums";
 import { Point, SpriteComponent } from "@openhotel/pixi-components";
+import { SpriteSheetEnum } from "shared/enums";
 import {
-  getPositionFromBlockIsometricPosition,
+  getPositionFromIsometricPosition,
   getZIndexFromIsometricPosition,
 } from "shared/utils";
 
 type Props = {
-  position?: Point;
-  type?: string;
+  position?: Partial<Point>;
 };
 
-export const BlockComponent: React.FC<Props> = ({
-  position = { x: 0, y: 0 },
-  type = "grass_0",
-}) => {
+export const ElectricalPostComponent: React.FC<Props> = ({ position }) => {
   const $position = useMemo(
-    () => getPositionFromBlockIsometricPosition(position),
+    () => getPositionFromIsometricPosition({ x: 0, y: 0, ...position }),
     [position],
   );
 
   const $zIndex = useMemo(
-    () => getZIndexFromIsometricPosition(position) - 10_000_000,
+    () => getZIndexFromIsometricPosition(position),
     [position],
   );
 
   return (
     <SpriteComponent
-      texture={type}
+      texture="electrical_post"
       spriteSheet={SpriteSheetEnum.WORLD}
       position={$position}
       zIndex={$zIndex}
-      pivot={{
-        x: 8,
-        y: 5,
-      }}
     />
   );
 };

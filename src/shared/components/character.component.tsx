@@ -1,8 +1,10 @@
 import React, { useMemo } from "react";
 import {
   AnimatedSpriteComponent,
+  ContainerComponent,
   PlayStatus,
   Point,
+  SpriteComponent,
 } from "@openhotel/pixi-components";
 import { CharacterAnimation, SpriteSheetEnum } from "shared/enums";
 import { CHARACTER_ANIMATIONS_SPEED, CHARACTER_MID_SIZE } from "shared/consts";
@@ -25,18 +27,25 @@ export const CharacterComponent: React.FC<Props> = ({
   );
 
   return (
-    <AnimatedSpriteComponent
-      spriteSheet={SpriteSheetEnum.PLAYER}
-      animation={animation}
-      playStatus={PlayStatus.PLAY}
-      animationSpeed={CHARACTER_ANIMATIONS_SPEED[animation]}
-      scale={{ x: direction === "right" ? 1 : -1 }}
+    <ContainerComponent
       pivot={{
-        x: 1 + CHARACTER_MID_SIZE.x,
+        x: CHARACTER_MID_SIZE.x,
         y: CHARACTER_MID_SIZE.y,
       }}
       position={$position}
       zIndex={position.x + position.y}
-    />
+    >
+      <AnimatedSpriteComponent
+        spriteSheet={SpriteSheetEnum.PLAYER}
+        animation={animation}
+        playStatus={PlayStatus.PLAY}
+        animationSpeed={CHARACTER_ANIMATIONS_SPEED[animation]}
+        scale={{ x: direction === "right" ? 1 : -1 }}
+        pivot={{
+          x: direction === "right" ? 0 : 1,
+        }}
+      />
+      <SpriteComponent texture="shadow" spriteSheet={SpriteSheetEnum.PLAYER} />
+    </ContainerComponent>
   );
 };
