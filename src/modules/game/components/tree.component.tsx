@@ -17,7 +17,6 @@ import {
   TREE_MASK_MAP,
   TREE_SPRITE_MAP,
   TREE_SPRITE_PIVOT_MAP,
-  TREE_SPRITE_Z_INDEX_MAP,
 } from "shared/consts";
 
 type Props = {
@@ -135,8 +134,7 @@ export const TreeComponent: React.FC<Props> = ({
   }, [maskData]);
 
   const $zIndex = useMemo(
-    () =>
-      getZIndexFromIsometricPosition(position) + TREE_SPRITE_Z_INDEX_MAP[type],
+    () => getZIndexFromIsometricPosition(position),
     [position, type],
   );
 

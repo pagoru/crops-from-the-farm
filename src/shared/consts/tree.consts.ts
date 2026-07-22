@@ -3,14 +3,8 @@ import { Point, Size } from "@openhotel/pixi-components";
 
 export const TREE_SPRITE_PIVOT_MAP: Record<TreeType, Point> = {
   [TreeType.BIG]: { x: 18, y: 43 },
-  [TreeType.SMALL_1]: { x: 7, y: 31 },
-  [TreeType.SMALL_2]: { x: 7, y: 31 },
-};
-
-export const TREE_SPRITE_Z_INDEX_MAP: Record<TreeType, number> = {
-  [TreeType.BIG]: 0,
-  [TreeType.SMALL_1]: -2,
-  [TreeType.SMALL_2]: -2,
+  [TreeType.SMALL_1]: { x: 6, y: 29 },
+  [TreeType.SMALL_2]: { x: 6, y: 29 },
 };
 
 export const TREE_SPRITE_MAP: Record<TreeType, string> = {

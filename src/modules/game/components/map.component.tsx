@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import { BlockComponent } from "shared/components";
+import { BlockComponent, ElectricalPostsComponent } from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
 import { TreeComponent } from "modules/game";
-import { TreeType } from "shared/enums";
+import { ElectricalPostDirection, TreeType } from "shared/enums";
 
 export const MapComponent: React.FC = () => {
   const renderTerrain = useMemo(() => {
@@ -75,8 +75,8 @@ export const MapComponent: React.FC = () => {
     // let j = 0;
     // let k = 0;
     const treeTypes = Object.keys(TreeType);
-    for (let j = 0; j < 6; j++) {
-      for (let k = 0; k < 6; k++) {
+    for (let j = 1; j < 6; j++) {
+      for (let k = 1; k < 6; k++) {
         const type = treeTypes[
           getRandomNumber(0, treeTypes.length - 1)
         ] as TreeType;
@@ -99,6 +99,29 @@ export const MapComponent: React.FC = () => {
     <>
       {renderTerrain}
       {renderTrees}
+      {
+        <ElectricalPostsComponent
+          posts={[
+            {
+              position: { x: 0, y: -30 },
+            },
+            {
+              position: { x: -5, y: -10 },
+            },
+            {
+              position: { x: 0, y: 10 },
+            },
+            {
+              position: { x: 40, y: 40 },
+              direction: ElectricalPostDirection.EAST_WEST,
+            },
+            {
+              position: { x: 80, y: 50 },
+              direction: ElectricalPostDirection.EAST_WEST,
+            },
+          ]}
+        />
+      }
     </>
   );
 };
