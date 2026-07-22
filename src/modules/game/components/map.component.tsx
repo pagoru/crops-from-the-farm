@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { BlockComponent } from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
 import { TreeComponent } from "modules/game";
+import { TreeType } from "shared/enums";
 
 export const MapComponent: React.FC = () => {
   const renderTerrain = useMemo(() => {
@@ -73,14 +74,19 @@ export const MapComponent: React.FC = () => {
     const list = [];
     // let j = 0;
     // let k = 0;
-    for (let j = 0; j < 8; j++) {
-      for (let k = 0; k < 8; k++) {
+    const treeTypes = Object.keys(TreeType);
+    for (let j = 0; j < 6; j++) {
+      for (let k = 0; k < 6; k++) {
+        const type = treeTypes[
+          getRandomNumber(0, treeTypes.length)
+        ] as TreeType;
         list.push(
           <TreeComponent
+            type={type}
             key={j + "_" + k + "tree"}
             position={{
-              x: j * getRandomNumber(8, 16),
-              y: k * getRandomNumber(8, 16),
+              x: j * getRandomNumber(10, 16),
+              y: k * getRandomNumber(10, 16),
             }}
           />,
         );

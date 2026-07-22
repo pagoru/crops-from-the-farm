@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   CameraProvider,
   GameProvider,
@@ -6,23 +6,30 @@ import {
   PlayerProvider,
   PlayerComponent,
   MapComponent,
-  TreeProvider,
+  SwayAnimationProvider,
 } from "modules/game";
 import { ContainerComponent } from "@openhotel/pixi-components";
+import { NesterComponent } from "shared/components";
 
 export const GameComponent: React.FC = () => {
+  const providers = useMemo(
+    () => [
+      (props: React.PropsWithChildren) => (
+        <CameraProvider guiChildren={<GuiComponent />} {...props} />
+      ),
+      GameProvider,
+      PlayerProvider,
+      SwayAnimationProvider,
+    ],
+    [],
+  );
+
   return (
-    <CameraProvider guiChildren={<GuiComponent />}>
-      <GameProvider>
-        <PlayerProvider>
-          <TreeProvider>
-            <ContainerComponent>
-              <MapComponent />
-              <PlayerComponent />
-            </ContainerComponent>
-          </TreeProvider>
-        </PlayerProvider>
-      </GameProvider>
-    </CameraProvider>
+    <NesterComponent components={providers}>
+      <ContainerComponent>
+        <MapComponent />
+        <PlayerComponent />
+      </ContainerComponent>
+    </NesterComponent>
   );
 };

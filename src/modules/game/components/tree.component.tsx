@@ -1,26 +1,57 @@
-import React, { useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   ContainerComponent,
   Point,
   SpriteComponent,
+  SpriteRef,
+  useEvents,
 } from "@openhotel/pixi-components";
-import { SpriteSheetEnum } from "shared/enums";
+import { CustomEvent, SpriteSheetEnum, TreeType } from "shared/enums";
 import {
   getPositionFromIsometricPosition,
   getRandomNumber,
 } from "shared/utils";
-import { useTree } from "modules/game";
+import { useSwayAnimation } from "modules/game";
+import {
+  TREE_MASK_MAP,
+  TREE_SPRITE_MAP,
+  TREE_SPRITE_PIVOT_MAP,
+} from "shared/consts";
 
 type Props = {
   position?: Partial<Point>;
+  type?: TreeType;
 };
 
 export const TreeComponent: React.FC<Props> = ({
   position = { x: 0, y: 0 },
+  type = TreeType.BIG,
 }) => {
-  const { getSway } = useTree();
+  const { on } = useEvents();
+  const { getSway } = useSwayAnimation();
 
+  const spritesRef = useRef<SpriteRef[]>([]);
   const seedRef = useRef<number>(getRandomNumber(0, 10_000_000));
+
+  const texture = useMemo(() => TREE_SPRITE_MAP[type], [type]);
+  const pivot = useMemo(() => TREE_SPRITE_PIVOT_MAP[type], [type]);
+  const maskData = useMemo(() => TREE_MASK_MAP[type], [type]);
+
+  useEffect(() => {
+    const onRemoveSwayAnimationEvent = on<{ time: number }>(
+      CustomEvent.SWAY_ANIMATION,
+      ({ time } = { time: 0 }) => {
+        spritesRef.current.forEach((sprite, index) => {
+          const sway = getSway(time, seedRef.current);
+          sprite.component.position.x = Math.round(sway * maskData.sway[index]);
+        });
+      },
+    );
+
+    return () => {
+      onRemoveSwayAnimationEvent();
+    };
+  }, [on, getSway, maskData]);
 
   const $position = useMemo(
     () =>
@@ -32,115 +63,82 @@ export const TreeComponent: React.FC<Props> = ({
     [position],
   );
 
-  const sway = useMemo(() => getSway(seedRef.current), [getSway]);
+  const setSpriteRef = useCallback(
+    (index: number) => (ref: SpriteRef) => {
+      spritesRef.current[index] = ref;
+    },
+    [],
+  );
+
+  const renderSprites = useMemo(() => {
+    const spriteList = [];
+
+    let accumulatedYPosition = 0;
+    maskData.divisions.forEach((yPosition, index) => {
+      spriteList.push(
+        <SpriteComponent
+          key={`sprite_${index}`}
+          ref={setSpriteRef(index)}
+          texture={texture}
+          spriteSheet={SpriteSheetEnum.WORLD}
+          maskPosition={{
+            y: accumulatedYPosition,
+          }}
+          maskPolygon={[
+            //
+            0,
+            0,
+            //
+            0,
+            yPosition,
+            //
+            maskData.size.width,
+            yPosition,
+            //
+            maskData.size.width,
+            0,
+          ]}
+        />,
+      );
+      accumulatedYPosition += yPosition;
+    });
+
+    const lastHeight = maskData.size.height - accumulatedYPosition;
+    if (lastHeight > 0)
+      spriteList.push(
+        <SpriteComponent
+          texture={texture}
+          spriteSheet={SpriteSheetEnum.WORLD}
+          maskPosition={{
+            y: accumulatedYPosition,
+          }}
+          maskPolygon={[
+            //
+            0,
+            0,
+            //
+            0,
+            lastHeight,
+            //
+            maskData.size.width,
+            lastHeight,
+            //
+            maskData.size.width,
+            0,
+          ]}
+        />,
+      );
+
+    return spriteList;
+  }, [maskData]);
 
   return (
     <ContainerComponent
       position={$position}
-      pivot={{
-        x: 18,
-        y: 43,
-      }}
+      pivot={pivot}
       zIndex={(position.x ?? 0) + (position.y ?? 0)}
     >
-      <SpriteComponent
-        texture="tree"
-        spriteSheet={SpriteSheetEnum.WORLD}
-        position={{
-          x: sway,
-        }}
-        maskPolygon={[
-          //
-          0, 0,
-          //
-          0, 8,
-          //
-          32, 8,
-          //
-          32, 0,
-        ]}
-      />
-      <SpriteComponent
-        texture="tree"
-        spriteSheet={SpriteSheetEnum.WORLD}
-        position={{
-          x: sway * 0.83,
-        }}
-        maskPosition={{
-          x: 0,
-          y: 8,
-        }}
-        maskPolygon={[
-          //
-          0, 0,
-          //
-          0, 4,
-          //
-          32, 4,
-          //
-          32, 0,
-        ]}
-      />
-      <SpriteComponent
-        texture="tree"
-        spriteSheet={SpriteSheetEnum.WORLD}
-        position={{
-          x: sway * 0.66,
-        }}
-        maskPosition={{
-          x: 0,
-          y: 12,
-        }}
-        maskPolygon={[
-          //
-          0, 0,
-          //
-          0, 4,
-          //
-          32, 4,
-          //
-          32, 0,
-        ]}
-      />
-      <SpriteComponent
-        texture="tree"
-        spriteSheet={SpriteSheetEnum.WORLD}
-        position={{
-          x: sway * 0.5,
-        }}
-        maskPosition={{
-          x: 0,
-          y: 16,
-        }}
-        maskPolygon={[
-          //
-          0, 0,
-          //
-          0, 8,
-          //
-          32, 8,
-          //
-          32, 0,
-        ]}
-      />
-      <SpriteComponent
-        texture="tree"
-        spriteSheet={SpriteSheetEnum.WORLD}
-        maskPosition={{
-          x: 0,
-          y: 24,
-        }}
-        maskPolygon={[
-          //
-          0, 0,
-          //
-          0, 24,
-          //
-          32, 24,
-          //
-          32, 0,
-        ]}
-      />
+      {renderSprites}
     </ContainerComponent>
   );
 };
