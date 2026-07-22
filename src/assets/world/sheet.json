@@ -34,6 +34,31 @@
       "frame": { "x": 64, "y": 32, "w": 16, "h": 16 },
       "sourceSize": { "w": 16, "h": 16 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "small_tree_0": {
+      "frame": { "x": 192, "y": 16, "w": 16, "h": 32 },
+      "sourceSize": { "w": 16, "h": 32 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "small_tree_1": {
+      "frame": { "x": 208, "y": 16, "w": 16, "h": 32 },
+      "sourceSize": { "w": 16, "h": 32 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "tree": {
+      "frame": { "x": 224, "y": 16, "w": 32, "h": 48 },
+      "sourceSize": { "w": 32, "h": 48 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "lamp_off": {
+      "frame": { "x": 144, "y": 16, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "lamp_on": {
+      "frame": { "x": 128, "y": 16, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {},

@@ -6,6 +6,7 @@ import {
   PlayerProvider,
   PlayerComponent,
   MapComponent,
+  TreeProvider,
 } from "modules/game";
 import { ContainerComponent } from "@openhotel/pixi-components";
 
@@ -14,10 +15,12 @@ export const GameComponent: React.FC = () => {
     <CameraProvider guiChildren={<GuiComponent />}>
       <GameProvider>
         <PlayerProvider>
-          <ContainerComponent>
-            <MapComponent />
-            <PlayerComponent />
-          </ContainerComponent>
+          <TreeProvider>
+            <ContainerComponent>
+              <MapComponent />
+              <PlayerComponent />
+            </ContainerComponent>
+          </TreeProvider>
         </PlayerProvider>
       </GameProvider>
     </CameraProvider>
