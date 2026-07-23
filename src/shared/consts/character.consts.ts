@@ -10,6 +10,6 @@ export const CHARACTER_ANIMATIONS_SPEED: Record<CharacterAnimation, number> = {
 };
 
 export const CHARACTER_MID_SIZE = {
-  x: 6,
+  x: 7,
   y: 12,
 };

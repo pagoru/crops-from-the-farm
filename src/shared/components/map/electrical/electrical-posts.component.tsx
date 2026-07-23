@@ -36,7 +36,12 @@ export const ElectricalPostsComponent: React.FC<Props> = ({ posts }) => {
         const dy = position.y - lastPost.position.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        const dynamicSag = Math.max(2, distance * 0.05);
+        const dynamicSag = Math.max(2, distance * 0.1);
+
+        const eastWestCorrection =
+          lastPost.direction === ElectricalPostDirection.EAST_WEST
+            ? { z: 4 }
+            : { z: 0 };
 
         list.push(
           <React.Fragment key={`catenary_${index}`}>
@@ -44,9 +49,13 @@ export const ElectricalPostsComponent: React.FC<Props> = ({ posts }) => {
               firstPoint={{
                 x: lastPost.position.x - 2,
                 y: lastPost.position.y,
-                z: 22,
+                z: 22 - eastWestCorrection.z,
               }}
-              secondPoint={{ x: position.x - 2, y: position.y, z: 20 }}
+              secondPoint={{
+                x: position.x - 2,
+                y: position.y,
+                z: 20 - eastWestCorrection.z,
+              }}
               sag={dynamicSag}
               zIndexPosition={zIndexPosition}
               alpha={0.25}
@@ -56,9 +65,13 @@ export const ElectricalPostsComponent: React.FC<Props> = ({ posts }) => {
               firstPoint={{
                 x: lastPost.position.x + 2,
                 y: lastPost.position.y,
-                z: 22,
+                z: 22 + eastWestCorrection.z,
               }}
-              secondPoint={{ x: position.x + 2, y: position.y, z: 22 }}
+              secondPoint={{
+                x: position.x + 2,
+                y: position.y,
+                z: 20 + eastWestCorrection.z,
+              }}
               sag={dynamicSag}
               zIndexPosition={{
                 x: zIndexPosition.x - 0.25,

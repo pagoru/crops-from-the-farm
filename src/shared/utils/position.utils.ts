@@ -6,6 +6,11 @@ export const getPositionFromIsometricPosition = (position: Point): Point => ({
   y: position.x + position.y,
 });
 
+export const getIsometricPositionFromPosition = (position: Point): Point => ({
+  x: (position.y + position.x / 2) / 2,
+  y: (position.y - position.x / 2) / 2,
+});
+
 export const getPositionFromBlockIsometricPosition = (
   position: Point,
 ): Point => ({

@@ -89,8 +89,8 @@ export const MapComponent: React.FC = () => {
             type={type}
             key={j + "_" + k + "tree" + type}
             position={{
-              x: j * getRandomNumber(10, 16),
-              y: k * getRandomNumber(10, 16),
+              x: j * getRandomNumber(10, 16) + 20,
+              y: k * getRandomNumber(10, 16) + 20,
             }}
           />,
         );
@@ -139,11 +139,15 @@ export const MapComponent: React.FC = () => {
               position: { x: 0, y: 10 },
             },
             {
-              position: { x: 40, y: 40 },
+              position: { x: 40, y: 60 },
               direction: ElectricalPostDirection.EAST_WEST,
             },
             {
-              position: { x: 80, y: 50 },
+              position: { x: 90, y: 60 },
+              direction: ElectricalPostDirection.EAST_WEST,
+            },
+            {
+              position: { x: 150, y: 60 },
               direction: ElectricalPostDirection.EAST_WEST,
             },
           ]}

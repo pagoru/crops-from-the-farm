@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
   AnimatedSpriteComponent,
   ContainerComponent,
@@ -8,7 +8,7 @@ import {
 } from "@openhotel/pixi-components";
 import { CharacterAnimation, SpriteSheetEnum } from "shared/enums";
 import { CHARACTER_ANIMATIONS_SPEED, CHARACTER_MID_SIZE } from "shared/consts";
-import { getPositionFromIsometricPosition } from "shared/utils";
+import { useEntity } from "shared/hooks";
 
 type Props = {
   animation?: CharacterAnimation;
@@ -21,10 +21,7 @@ export const CharacterComponent: React.FC<Props> = ({
   animation = CharacterAnimation.IDLE,
   position = { x: 0, y: 0 },
 }) => {
-  const $position = useMemo(
-    () => getPositionFromIsometricPosition(position),
-    [position],
-  );
+  const entityProps = useEntity({ position });
 
   return (
     <ContainerComponent
@@ -32,8 +29,7 @@ export const CharacterComponent: React.FC<Props> = ({
         x: CHARACTER_MID_SIZE.x,
         y: CHARACTER_MID_SIZE.y,
       }}
-      position={$position}
-      zIndex={position.x + position.y}
+      {...entityProps}
     >
       <AnimatedSpriteComponent
         spriteSheet={SpriteSheetEnum.PLAYER}

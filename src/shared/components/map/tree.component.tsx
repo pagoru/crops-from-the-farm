@@ -7,17 +7,13 @@ import {
   useEvents,
 } from "@openhotel/pixi-components";
 import { CustomEvent, SpriteSheetEnum, TreeType } from "shared/enums";
-import {
-  getPositionFromIsometricPosition,
-  getRandomNumber,
-  getSwayAnimation,
-  getZIndexFromIsometricPosition,
-} from "shared/utils";
+import { getRandomNumber, getSwayAnimation } from "shared/utils";
 import {
   TREE_MASK_MAP,
   TREE_SPRITE_MAP,
   TREE_SPRITE_PIVOT_MAP,
 } from "shared/consts";
+import { useEntity } from "shared/hooks";
 
 type Props = {
   position?: Partial<Point>;
@@ -29,6 +25,7 @@ export const TreeComponent: React.FC<Props> = ({
   type = TreeType.BIG,
 }) => {
   const { on } = useEvents();
+  const entityProps = useEntity({ position });
 
   const spritesRef = useRef<SpriteRef[]>([]);
   const seedRef = useRef<number>(getRandomNumber(0, 10_000_000));
@@ -52,16 +49,6 @@ export const TreeComponent: React.FC<Props> = ({
       onRemoveSwayAnimationEvent();
     };
   }, [on, maskData]);
-
-  const $position = useMemo(
-    () =>
-      getPositionFromIsometricPosition({
-        x: 0,
-        y: 0,
-        ...position,
-      }),
-    [position],
-  );
 
   const setSpriteRef = useCallback(
     (index: number) => (ref: SpriteRef) => {
@@ -133,13 +120,8 @@ export const TreeComponent: React.FC<Props> = ({
     return spriteList;
   }, [maskData]);
 
-  const $zIndex = useMemo(
-    () => getZIndexFromIsometricPosition(position),
-    [position, type],
-  );
-
   return (
-    <ContainerComponent position={$position} pivot={pivot} zIndex={$zIndex}>
+    <ContainerComponent {...entityProps} pivot={pivot}>
       {renderSprites}
     </ContainerComponent>
   );
