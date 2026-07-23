@@ -64,6 +64,26 @@
       "frame": { "x": 0, "y": 176, "w": 16, "h": 48 },
       "sourceSize": { "w": 16, "h": 48 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_0": {
+      "frame": { "x": 128, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_1": {
+      "frame": { "x": 144, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_2": {
+      "frame": { "x": 160, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_3": {
+      "frame": { "x": 176, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {},

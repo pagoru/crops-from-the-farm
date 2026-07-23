@@ -1,7 +1,11 @@
 import React, { useMemo } from "react";
-import { BlockComponent, ElectricalPostsComponent } from "shared/components";
+import {
+  BlockComponent,
+  ElectricalPostsComponent,
+  HedgeComponent,
+  TreeComponent,
+} from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
-import { TreeComponent } from "modules/game";
 import { ElectricalPostDirection, TreeType } from "shared/enums";
 
 export const MapComponent: React.FC = () => {
@@ -99,6 +103,29 @@ export const MapComponent: React.FC = () => {
     <>
       {renderTerrain}
       {renderTrees}
+      <HedgeComponent position={{ y: 2 }} />
+      <HedgeComponent
+        position={{
+          x: 1,
+          y: 2,
+        }}
+        type={1}
+      />
+      <HedgeComponent
+        position={{
+          x: 2,
+          y: 2,
+        }}
+        type={2}
+      />
+      <HedgeComponent
+        position={{
+          x: 3,
+          y: 2,
+        }}
+        type={3}
+      />
+      <BlockComponent />
       {
         <ElectricalPostsComponent
           posts={[
