@@ -5,3 +5,4 @@ export * from "./hedge.component";
 export * from "./weeds.component";
 
 export * from "./electrical";
+export * from "./wall";

@@ -4,10 +4,11 @@ import {
   ElectricalPostsComponent,
   HedgeComponent,
   TreeComponent,
+  WallsComponent,
   WeedsComponent,
 } from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
-import { ElectricalPostDirection, TreeType } from "shared/enums";
+import { CrossDirection, Direction, TreeType, WallType } from "shared/enums";
 
 export const MapComponent: React.FC = () => {
   const renderTerrain = useMemo(() => {
@@ -102,10 +103,11 @@ export const MapComponent: React.FC = () => {
 
   const renderWeeds = useMemo(() => {
     const list = [];
-    for (let j = 1; j < 10; j++) {
-      for (let k = 1; k < 10; k++) {
+    for (let j = 1; j < 6; j++) {
+      for (let k = 1; k < 6; k++) {
         list.push(
           <WeedsComponent
+            key={j + "_" + k + "weed"}
             position={{
               x: j * getRandomNumber(10, 16) + 20,
               y: k * getRandomNumber(10, 16) + 20,
@@ -122,6 +124,46 @@ export const MapComponent: React.FC = () => {
       {renderTerrain}
       {renderTrees}
       {renderWeeds}
+      <WallsComponent
+        walls={[
+          {
+            direction: Direction.NORTH,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.NORTH,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.EAST,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.EAST,
+            type: WallType.NONE,
+          },
+          {
+            direction: Direction.EAST,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.SOUTH,
+          },
+          {
+            direction: Direction.SOUTH,
+          },
+          {
+            direction: Direction.WEST,
+          },
+          {
+            direction: Direction.WEST,
+          },
+          {
+            direction: Direction.NORTH,
+            type: WallType.TALL,
+          },
+        ]}
+      />
       <HedgeComponent position={{ y: 2 }} />
       <HedgeComponent
         position={{
@@ -149,25 +191,25 @@ export const MapComponent: React.FC = () => {
         <ElectricalPostsComponent
           posts={[
             {
-              position: { x: 0, y: -30 },
+              position: { x: 0, y: -40 },
             },
             {
-              position: { x: -5, y: -10 },
+              position: { x: 0, y: -10 },
             },
             {
-              position: { x: 0, y: 10 },
+              position: { x: 0, y: 20 },
             },
             {
               position: { x: 40, y: 60 },
-              direction: ElectricalPostDirection.EAST_WEST,
+              direction: CrossDirection.EAST_WEST,
             },
             {
               position: { x: 90, y: 60 },
-              direction: ElectricalPostDirection.EAST_WEST,
+              direction: CrossDirection.EAST_WEST,
             },
             {
               position: { x: 150, y: 60 },
-              direction: ElectricalPostDirection.EAST_WEST,
+              direction: CrossDirection.EAST_WEST,
             },
           ]}
         />

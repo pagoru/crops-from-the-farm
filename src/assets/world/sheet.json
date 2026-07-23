@@ -129,6 +129,16 @@
       "frame": { "x": 224, "y": 0, "w": 16, "h": 16 },
       "sourceSize": { "w": 16, "h": 16 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "wall_short": {
+      "frame": { "x": 96, "y": 96, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "wall_tall": {
+      "frame": { "x": 112, "y": 96, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {},

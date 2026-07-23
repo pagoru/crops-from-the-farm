@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
 import { CatenaryCable, ElectricalPostComponent } from "shared/components";
 import { Point } from "@openhotel/pixi-components";
-import { ElectricalPostDirection } from "shared/enums";
+import { CrossDirection } from "shared/enums";
 
 type Post = {
   position: Point;
-  direction?: ElectricalPostDirection;
+  direction?: CrossDirection;
 };
 
 type Props = {
@@ -39,9 +39,7 @@ export const ElectricalPostsComponent: React.FC<Props> = ({ posts }) => {
         const dynamicSag = Math.max(2, distance * 0.1);
 
         const eastWestCorrection =
-          lastPost.direction === ElectricalPostDirection.EAST_WEST
-            ? { z: 4 }
-            : { z: 0 };
+          lastPost.direction === CrossDirection.EAST_WEST ? { z: 4 } : { z: 0 };
 
         list.push(
           <React.Fragment key={`catenary_${index}`}>

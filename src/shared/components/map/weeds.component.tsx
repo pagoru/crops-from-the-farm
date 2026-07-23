@@ -15,13 +15,11 @@ export const WeedsComponent: React.FC<Props> = ({
 }) => {
   const entityProps = useEntity({ position });
 
-  console.log(entityProps);
   return (
     <SpriteComponent
       texture={`weeds_${type}`}
       spriteSheet={SpriteSheetEnum.WORLD}
       {...entityProps}
-      zIndex={100}
     />
   );
 };
