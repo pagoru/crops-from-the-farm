@@ -4,6 +4,7 @@ import {
   ElectricalPostsComponent,
   HedgeComponent,
   TreeComponent,
+  WeedsComponent,
 } from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
 import { ElectricalPostDirection, TreeType } from "shared/enums";
@@ -99,10 +100,28 @@ export const MapComponent: React.FC = () => {
     return list;
   }, []);
 
+  const renderWeeds = useMemo(() => {
+    const list = [];
+    for (let j = 1; j < 10; j++) {
+      for (let k = 1; k < 10; k++) {
+        list.push(
+          <WeedsComponent
+            position={{
+              x: j * getRandomNumber(10, 16) + 20,
+              y: k * getRandomNumber(10, 16) + 20,
+            }}
+          />,
+        );
+      }
+    }
+    return list;
+  }, []);
+
   return (
     <>
       {renderTerrain}
       {renderTrees}
+      {renderWeeds}
       <HedgeComponent position={{ y: 2 }} />
       <HedgeComponent
         position={{
