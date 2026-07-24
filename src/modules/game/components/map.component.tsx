@@ -4,11 +4,11 @@ import {
   ElectricalPostsComponent,
   HedgeComponent,
   TreeComponent,
-  WallsComponent,
+  WallComponent,
   WeedsComponent,
 } from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
-import { CrossDirection, Direction, TreeType, WallType } from "shared/enums";
+import { CrossDirection, Direction, TreeType } from "shared/enums";
 
 export const MapComponent: React.FC = () => {
   const renderTerrain = useMemo(() => {
@@ -124,46 +124,52 @@ export const MapComponent: React.FC = () => {
       {renderTerrain}
       {renderTrees}
       {renderWeeds}
-      <WallsComponent
-        walls={[
-          {
-            direction: Direction.NORTH,
-            type: WallType.TALL,
-          },
-          {
-            direction: Direction.NORTH,
-            type: WallType.TALL,
-          },
-          {
-            direction: Direction.EAST,
-            type: WallType.TALL,
-          },
-          {
-            direction: Direction.EAST,
-            type: WallType.NONE,
-          },
-          {
-            direction: Direction.EAST,
-            type: WallType.TALL,
-          },
-          {
-            direction: Direction.SOUTH,
-          },
-          {
-            direction: Direction.SOUTH,
-          },
-          {
-            direction: Direction.WEST,
-          },
-          {
-            direction: Direction.WEST,
-          },
-          {
-            direction: Direction.NORTH,
-            type: WallType.TALL,
-          },
-        ]}
-      />
+      <WallComponent direction={Direction.NORTH} position={{ x: 0 }} />
+      <WallComponent direction={Direction.SOUTH} position={{ x: 0 }} />
+      <WallComponent direction={Direction.EAST} position={{ x: 0 }} />
+      <WallComponent direction={Direction.WEST} position={{ x: 0 }} />
+      <WallComponent direction={Direction.WEST} position={{ x: 2 }} />
+      <WallComponent direction={Direction.WEST} position={{ x: 4 }} />
+      {/*<WallsComponent*/}
+      {/*  walls={[*/}
+      {/*    {*/}
+      {/*      direction: Direction.SOUTH,*/}
+      {/*      type: WallType.TALL,*/}
+      {/*    },*/}
+      {/*    {*/}
+      {/*      direction: Direction.SOUTH,*/}
+      {/*      type: WallType.TALL,*/}
+      {/*    },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.EAST,*/}
+      {/*    //   type: WallType.TALL,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.EAST,*/}
+      {/*    //   type: WallType.NONE,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.EAST,*/}
+      {/*    //   type: WallType.TALL,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.SOUTH,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.SOUTH,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.WEST,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.WEST,*/}
+      {/*    // },*/}
+      {/*    // {*/}
+      {/*    //   direction: Direction.NORTH,*/}
+      {/*    //   type: WallType.TALL,*/}
+      {/*    // },*/}
+      {/*  ]}*/}
+      {/*/>*/}
       <HedgeComponent position={{ y: 2 }} />
       <HedgeComponent
         position={{
