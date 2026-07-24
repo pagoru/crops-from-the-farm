@@ -31,7 +31,9 @@ export const CameraProvider: React.FunctionComponent<CameraProps> = ({
       }}
       children={
         <>
-          {guiChildren}
+          <ContainerComponent zIndex={Number.MAX_SAFE_INTEGER}>
+            {guiChildren}
+          </ContainerComponent>
           <ContainerComponent position={position}>
             {children}
           </ContainerComponent>

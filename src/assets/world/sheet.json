@@ -9,6 +9,136 @@
       "frame": { "x": 16, "y": 16, "w": 16, "h": 16 },
       "sourceSize": { "w": 16, "h": 16 },
       "anchor": { "x": 0, "y": 0 }
+    },
+    "grass_block": {
+      "frame": { "x": 16, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_0": {
+      "frame": { "x": 0, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_left": {
+      "frame": { "x": 32, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_right": {
+      "frame": { "x": 48, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "path_both": {
+      "frame": { "x": 64, "y": 32, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "small_tree_0": {
+      "frame": { "x": 192, "y": 16, "w": 16, "h": 32 },
+      "sourceSize": { "w": 16, "h": 32 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "small_tree_1": {
+      "frame": { "x": 208, "y": 16, "w": 16, "h": 32 },
+      "sourceSize": { "w": 16, "h": 32 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "tree": {
+      "frame": { "x": 224, "y": 16, "w": 32, "h": 48 },
+      "sourceSize": { "w": 32, "h": 48 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "lamp_off": {
+      "frame": { "x": 144, "y": 16, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "lamp_on": {
+      "frame": { "x": 128, "y": 16, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "electrical_post": {
+      "frame": { "x": 0, "y": 176, "w": 16, "h": 48 },
+      "sourceSize": { "w": 16, "h": 48 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_0": {
+      "frame": { "x": 128, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_1": {
+      "frame": { "x": 144, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_2": {
+      "frame": { "x": 160, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "hedge_3": {
+      "frame": { "x": 176, "y": 64, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_0": {
+      "frame": { "x": 96, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_1": {
+      "frame": { "x": 112, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_2": {
+      "frame": { "x": 128, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_3": {
+      "frame": { "x": 144, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_4": {
+      "frame": { "x": 160, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_5": {
+      "frame": { "x": 176, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_6": {
+      "frame": { "x": 192, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_7": {
+      "frame": { "x": 208, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "weeds_8": {
+      "frame": { "x": 224, "y": 0, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "wall_short": {
+      "frame": { "x": 96, "y": 96, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
+    },
+    "wall_tall": {
+      "frame": { "x": 112, "y": 96, "w": 16, "h": 16 },
+      "sourceSize": { "w": 16, "h": 16 },
+      "anchor": { "x": 0, "y": 0 }
     }
   },
   "animations": {},

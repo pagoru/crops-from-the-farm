@@ -78,7 +78,7 @@ export const PlayerComponent: React.FC<Props> = ({ onChangePosition }) => {
       }
     });
 
-    const consumedDelta = 80;
+    const consumedDelta = 40;
     let accDelta = 0;
 
     const onRemoveCustomTicker = add({
