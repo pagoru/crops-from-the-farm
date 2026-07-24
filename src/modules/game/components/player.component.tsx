@@ -4,7 +4,7 @@ import { Event, Point, useEvents } from "@openhotel/pixi-components";
 import { useTicker } from "shared/hooks";
 import { TickerQueue } from "@oh/queue";
 import { CharacterAnimation, CustomEvent } from "shared/enums";
-import { usePlayer } from "modules/game";
+import { useMap, usePlayer } from "modules/game";
 import { AXES_DEAD_ZONE } from "shared/consts";
 
 type Props = {
@@ -14,6 +14,7 @@ type Props = {
 export const PlayerComponent: React.FC<Props> = ({ onChangePosition }) => {
   const { on } = useEvents();
   const { add } = useTicker();
+  const { canWalk } = useMap();
   const { position, setPosition } = usePlayer();
 
   const currentMoveKeyCode = useRef<string[]>([]);
@@ -31,12 +32,13 @@ export const PlayerComponent: React.FC<Props> = ({ onChangePosition }) => {
     ) => {
       setPosition(($position) => {
         const $point = { ...$position, ...onPosition($position) };
+        if (!canWalk($point)) return $position;
         onChangePosition?.($point);
         return $point;
       });
       setDirection(direction);
     },
-    [onChangePosition, setPosition, setDirection],
+    [onChangePosition, setPosition, setDirection, canWalk],
   );
 
   useEffect(() => {
