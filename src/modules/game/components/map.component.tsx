@@ -4,11 +4,11 @@ import {
   ElectricalPostsComponent,
   HedgeComponent,
   TreeComponent,
-  WallComponent,
+  WallsComponent,
   WeedsComponent,
 } from "shared/components";
 import { getNoise, getRandomNumber } from "shared/utils";
-import { CrossDirection, Direction, TreeType } from "shared/enums";
+import { CrossDirection, Direction, TreeType, WallType } from "shared/enums";
 
 export const MapComponent: React.FC = () => {
   const renderTerrain = useMemo(() => {
@@ -119,107 +119,137 @@ export const MapComponent: React.FC = () => {
     return list;
   }, []);
 
+  const renderWalls = useMemo(
+    () => (
+      <WallsComponent
+        walls={[
+          {
+            direction: Direction.WEST,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.WEST,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.NORTH,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.NORTH,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.EAST,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.NORTH,
+            type: WallType.TALL,
+          },
+          {
+            direction: Direction.NORTH,
+          },
+          {
+            direction: Direction.EAST,
+          },
+          {
+            direction: Direction.EAST,
+          },
+          {
+            direction: Direction.EAST,
+          },
+          {
+            direction: Direction.SOUTH,
+          },
+          {
+            direction: Direction.SOUTH,
+          },
+          {
+            direction: Direction.SOUTH,
+          },
+          {
+            direction: Direction.WEST,
+          },
+          {
+            direction: Direction.SOUTH,
+          },
+        ]}
+      />
+    ),
+    [],
+  );
+
+  const renderElectricalPosts = useMemo(
+    () => (
+      <ElectricalPostsComponent
+        posts={[
+          {
+            position: { x: 0, y: -40 },
+          },
+          {
+            position: { x: 0, y: -10 },
+          },
+          {
+            position: { x: 0, y: 20 },
+          },
+          {
+            position: { x: 40, y: 60 },
+            direction: CrossDirection.EAST_WEST,
+          },
+          {
+            position: { x: 90, y: 60 },
+            direction: CrossDirection.EAST_WEST,
+          },
+          {
+            position: { x: 150, y: 60 },
+            direction: CrossDirection.EAST_WEST,
+          },
+        ]}
+      />
+    ),
+    [],
+  );
+
+  const renderHedges = useMemo(
+    () => (
+      <>
+        <HedgeComponent position={{ y: 2 }} />
+        <HedgeComponent
+          position={{
+            x: 1,
+            y: 2,
+          }}
+          type={1}
+        />
+        <HedgeComponent
+          position={{
+            x: 2,
+            y: 2,
+          }}
+          type={2}
+        />
+        <HedgeComponent
+          position={{
+            x: 3,
+            y: 2,
+          }}
+          type={3}
+        />
+      </>
+    ),
+    [],
+  );
+
   return (
     <>
       {renderTerrain}
       {renderTrees}
       {renderWeeds}
-      <WallComponent direction={Direction.NORTH} position={{ x: 0 }} />
-      <WallComponent direction={Direction.SOUTH} position={{ x: 0 }} />
-      <WallComponent direction={Direction.EAST} position={{ x: 0 }} />
-      <WallComponent direction={Direction.WEST} position={{ x: 0 }} />
-      <WallComponent direction={Direction.WEST} position={{ x: 2 }} />
-      <WallComponent direction={Direction.WEST} position={{ x: 4 }} />
-      {/*<WallsComponent*/}
-      {/*  walls={[*/}
-      {/*    {*/}
-      {/*      direction: Direction.SOUTH,*/}
-      {/*      type: WallType.TALL,*/}
-      {/*    },*/}
-      {/*    {*/}
-      {/*      direction: Direction.SOUTH,*/}
-      {/*      type: WallType.TALL,*/}
-      {/*    },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.EAST,*/}
-      {/*    //   type: WallType.TALL,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.EAST,*/}
-      {/*    //   type: WallType.NONE,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.EAST,*/}
-      {/*    //   type: WallType.TALL,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.SOUTH,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.SOUTH,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.WEST,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.WEST,*/}
-      {/*    // },*/}
-      {/*    // {*/}
-      {/*    //   direction: Direction.NORTH,*/}
-      {/*    //   type: WallType.TALL,*/}
-      {/*    // },*/}
-      {/*  ]}*/}
-      {/*/>*/}
-      <HedgeComponent position={{ y: 2 }} />
-      <HedgeComponent
-        position={{
-          x: 1,
-          y: 2,
-        }}
-        type={1}
-      />
-      <HedgeComponent
-        position={{
-          x: 2,
-          y: 2,
-        }}
-        type={2}
-      />
-      <HedgeComponent
-        position={{
-          x: 3,
-          y: 2,
-        }}
-        type={3}
-      />
+      {renderWalls}
+      {renderElectricalPosts}
+      {renderHedges}
       <BlockComponent />
-      {
-        <ElectricalPostsComponent
-          posts={[
-            {
-              position: { x: 0, y: -40 },
-            },
-            {
-              position: { x: 0, y: -10 },
-            },
-            {
-              position: { x: 0, y: 20 },
-            },
-            {
-              position: { x: 40, y: 60 },
-              direction: CrossDirection.EAST_WEST,
-            },
-            {
-              position: { x: 90, y: 60 },
-              direction: CrossDirection.EAST_WEST,
-            },
-            {
-              position: { x: 150, y: 60 },
-              direction: CrossDirection.EAST_WEST,
-            },
-          ]}
-        />
-      }
     </>
   );
 };

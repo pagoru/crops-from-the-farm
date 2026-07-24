@@ -16,34 +16,13 @@ type Props = {
 export const WallsComponent: React.FC<Props> = ({
   position = { x: 0, y: 0 },
   walls,
-}) => {
-  return useMemo(() => {
+}) =>
+  useMemo(() => {
     const list = [];
 
     let index = 0;
     let nextPosition = { x: 0, y: 0, ...position };
-    let lastDirection;
     for (const wall of walls) {
-      // if (index > 0)
-      //   switch (wall.direction) {
-      //     case Direction.NORTH:
-      //       nextPosition.y -= 4 - (wall.direction !== lastDirection ? 2 : 0);
-      //       nextPosition.x += wall.direction !== lastDirection ? 2 : 0;
-      //       break;
-      //     case Direction.EAST:
-      //       nextPosition.x -= 4 - (wall.direction !== lastDirection ? 2 : 0);
-      //       nextPosition.y -= wall.direction !== lastDirection ? 2 : 0;
-      //       break;
-      //     case Direction.SOUTH:
-      //       nextPosition.y += 4 - (wall.direction !== lastDirection ? 2 : 0);
-      //       nextPosition.x -= wall.direction !== lastDirection ? 2 : 0;
-      //       break;
-      //     case Direction.WEST:
-      //       nextPosition.x += 4 - (wall.direction !== lastDirection ? 2 : 0);
-      //       nextPosition.y += wall.direction !== lastDirection ? 2 : 0;
-      //       break;
-      //   }
-      // const direction = getCrossDirectionFromDirection(wall.direction);
       if (wall.type !== WallType.NONE)
         list.push(
           <WallComponent
@@ -53,9 +32,21 @@ export const WallsComponent: React.FC<Props> = ({
             direction={wall.direction}
           />,
         );
-      lastDirection = wall.direction;
+      switch (wall.direction) {
+        case Direction.NORTH:
+          nextPosition.y -= 4;
+          break;
+        case Direction.SOUTH:
+          nextPosition.y += 4;
+          break;
+        case Direction.EAST:
+          nextPosition.x -= 4;
+          break;
+        case Direction.WEST:
+          nextPosition.x += 4;
+          break;
+      }
       index++;
     }
     return list;
   }, [walls, position]);
-};
